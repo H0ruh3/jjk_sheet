@@ -22,4 +22,4 @@ classifiers = [
 ]
 keywords = ["jjk_sheet", "rpg", "jujutsu", "kaisen", "ficha"]
 requires-python = ">=3.10.7"
-dependencies = ["gspread", "google-api-python-client", "google-auth-httplib2", "google-auth-oauthlib]
+dependencies = ["gspread", "google-api-python-client", "google-auth-httplib2", "google-auth-oauthlib"]
