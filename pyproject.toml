@@ -21,5 +21,5 @@ classifiers = [
     "Topic :: Games/Entertainment :: Role-Playing",
 ]
 keywords = ["jjk_sheet", "rpg", "jujutsu", "kaisen", "ficha"]
-requires-python = ">=3.9"
+requires-python = ">=3.10.7"
 dependencies = ["gspread", "google-api-python-client", "google-auth-httplib2", "google-auth-oauthlib]
