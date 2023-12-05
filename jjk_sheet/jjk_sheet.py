@@ -405,16 +405,4 @@ class Invocacoes:
         
         self.tipo = values[0][0]
         self.invocacoes = [Invocacao(values, pl) for values in pl.batch_get(self.invocacoes)]
-    
-    
-    #criando e atualizando valores
-    #valores = [
-    #    ["A1", "B1", "C1"],
-    #    ["A2", "B2"],
-    #    ["A3", "B3", "C3"]
-    #]
-    #result = (
-    #    sheet.values()
-    #    .update(spreadsheetId=SAMPLE_SPREADSHEET_ID, range="Página1!A1", valueInputOption="USER_ENTERED", body={"values": valores}) pode passar o valor RAW para uso de fórmulas
-    #    .execute()
-    #)
+        
