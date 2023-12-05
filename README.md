@@ -1,6 +1,6 @@
 # jjk_sheet
 
-**jjk_sheet** é uma biblioteca para a obtenção de dados de uma [ficha](https://docs.google.com/spreadsheets/d/1FwGq5BgTskWBDjUIEhkiKh-FNJHGhEFVyJZIc7niOkg/edit?usp=sharing)
+**jjk_sheet** é uma biblioteca para a obtenção de dados de uma [ficha](https://docs.google.com/spreadsheets/d/1txN7cAC2WXbPeq5nRSgI-k4hjtBLbEI2KUr61RMuul4/)
 do rpg [Feiticeiros e Maldições](https://drive.google.com/file/d/172OB3Pz7-o9BFateI3BEdRiBllpbx34w/view).
 
 ---
@@ -149,6 +149,8 @@ print(ficha.perf_amald.nome_da_tecnica)
 Os atributos disponíveis em `ficha.perf_amald` são:
 
 - `atributo_principal`
+- `bunus_acerto`
+- `cd_tecnica`
 - `descricao_da_tecnica`    
 - `energia_atual`
 - `energia_maximo`
@@ -187,7 +189,7 @@ Os atributos disponíveis em `ficha.invocacoes` são:
 
 ##### Invocações
 
-`ficha.invocacoes.invocacoes` retornará uma lista de 5 invocações, onde
+`ficha.invocacoes.invocacoes` retornará uma lista de invocações, caso tenha alguma, onde
 cada um delas terá os seguintes atributos:
 
 - `acoes`

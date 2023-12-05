@@ -44,7 +44,7 @@ class FichaPessoal:
         self.client = client
         self.sheet_id = sheet_id
         self.pl = None
-        self.tudo = tabela + "A1:BR40"
+        self.tudo = tabela + "A1:BQ44"
         self.nome = tabela + "F3"
         self.nivel = tabela + "V3"
         self.maestria = tabela + "V4"
@@ -83,8 +83,8 @@ class FichaPessoal:
         self.energia_temporario = tabela + "AI15"
         self.maestrias = tabela + "AW31:AW36"
         self.registro_rapido = tabela + "AC26:AS29"
-        self.habilidades_de_especializacao = tabela + "BF5:BF24"
-        self.talentos = tabela + "BF30:BF39"
+        self.habilidades_de_especializacao = tabela + "BF5:BF29"
+        self.talentos = tabela + "BF34:BF43"
         self.atletismo = tabela + "L22"			
         self.luta = tabela + "L23"			
         self.acrobacia = tabela + "L24"			
@@ -169,8 +169,8 @@ class FichaPessoal:
           } for i in range(25, 28) if all([c < len(values[i]) for c in [28, 32, 34, 38, 41, 44]]) and values[i][28] != ""
           ]
         
-        self.habilidades_de_especializacao = [(values[i][57], pl.get_note(n)) for i, n in [(c, f"BF{c+1}") for c in range(4, 24)] if values[i][57] != ""]
-        self.talentos = [(values[i][57], pl.get_note(n)) for i, n in [(c, f"BF{c+1}") for c in range(29,39)] if values[i][57] != ""]
+        self.habilidades_de_especializacao = [(values[i][57], pl.get_note(n)) for i, n in [(c, f"BF{c+1}") for c in range(4, 29)] if values[i][57] != ""]
+        self.talentos = [(values[i][57], pl.get_note(n)) for i, n in [(c, f"BF{c+1}") for c in range(33,43)] if values[i][57] != ""]
         self.atletismo = values[21][11]
         self.luta = values[22][11]
         self.acrobacia = values[23][11]
@@ -289,7 +289,7 @@ class PerfilAmaldicoado:
         self.client = client
         self.sheet_id = sheet_id
         self.pl = None
-        self.tudo = tabela + "A1:BE28"
+        self.tudo = tabela + "A1:BJ33"
         self.habilidades_conhecidas = tabela + "F4"
         self.habilidades_maximas = tabela + "F6"
         self.atributo_principal = tabela + "B10"
@@ -298,13 +298,16 @@ class PerfilAmaldicoado:
         self.energia_atual = tabela + "I4"
         self.energia_maximo = tabela + "L4"
         self.energia_temporario = tabela + "O4"
-        self.habilidades_amaldicoadas = tabela + "S7:S26"
+        self.habilidades_amaldicoadas = tabela + "S7:S31"
         self.tecnicas_nv0 = tabela + "AD5:AD14"
         self.tecnicas_nv1 = tabela + "AM5:AM14"
         self.tecnicas_nv2 = tabela + "AV5:AV14"
         self.tecnicas_nv3 = tabela + "AD16:AD25"
         self.tecnicas_nv4 = tabela + "AM16:AM25"
         self.tecnicas_nv5 = tabela + "AV16:AV25"
+        self.cd_tecnica = tabela + "BF3"
+        self.bonus_acerto = tabela + "BF8"
+        
         
     def get(self):
         result = (
@@ -324,13 +327,15 @@ class PerfilAmaldicoado:
         self.energia_atual = values[3][8]
         self.energia_maximo = values[3][11]
         self.energia_temporario = values[3][14]
-        self.habilidades_amaldicoadas = [(values[i][18], pl.get_note(f"S{i+1}")) for i in range(6, 26) if values[i][18] != ""]
+        self.habilidades_amaldicoadas = [(values[i][18], pl.get_note(f"S{i+1}")) for i in range(6, 31) if values[i][18] != ""]
         self.tecnicas_nv0 = [(values[i][29], pl.get_note(f"AD{i+1}")) for i in range(4, 14) if 29 < len(values[i]) and values[i][29] != ""]
         self.tecnicas_nv1 = [(values[i][38], pl.get_note(f"AM{i+1}")) for i in range(4, 14) if 38 < len(values[i]) and values[i][38] != ""]
         self.tecnicas_nv2 = [(values[i][47], pl.get_note(f"AV{i+1}")) for i in range(4, 14) if 47 < len(values[i]) and values[i][47] != ""]
         self.tecnicas_nv3 = [(values[i][29], pl.get_note(f"AD{i+1}")) for i in range(15, 25) if 29 < len(values[i]) and values[i][29] != ""]
         self.tecnicas_nv4 = [(values[i][38], pl.get_note(f"AM{i+1}")) for i in range(15, 25) if 38 < len(values[i]) and values[i][38] != ""]
         self.tecnicas_nv5 = [(values[i][47], pl.get_note(f"AV{i+1}")) for i in range(15, 25) if 47 < len(values[i]) and values[i][47] != ""]
+        self.cd_tecnica = values[2][57] if 57 < len(values[2]) else None
+        self.bonus_acerto = values[7][57] if 57 < len(values[7]) else None
         
 
 class Invocacao:
@@ -390,9 +395,9 @@ class Invocacoes:
         self.client = client
         self.sheet_id = sheet_id
         self.pl = None
-        self.tudo = tabela + "A1:BS40"
+        self.tudo = tabela + "A1:BS75"
         self.tipo = tabela + "B2"
-        self.invocacoes = ["A5:O39", "O5:AC39", "AC5:AQ39", "AQ5:BE39", "BE5:BS39"]
+        self.invocacoes = ["A5:O39", "O5:AC39", "AC5:AQ39", "AQ5:BE39", "BE5:BS39", "A41:O75", "O41:AC75", "AC41:AQ75", "AQ41:BE75", "BE41:BS75"]
     
     def get(self):
         result = (
@@ -404,5 +409,5 @@ class Invocacoes:
         self.pl = pl = self.client.open_by_key(self.sheet_id).get_worksheet(3)
         
         self.tipo = values[0][0]
-        self.invocacoes = [Invocacao(values, pl) for values in pl.batch_get(self.invocacoes)]
+        self.invocacoes = [Invocacao(values, pl) for values in pl.batch_get(self.invocacoes) if not len(values[2]) == 0]
         
