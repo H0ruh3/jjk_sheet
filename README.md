@@ -187,7 +187,7 @@ Os atributos disponíveis em `ficha.invocacoes` são:
 
 ##### Invocações
 
-`ficha.invocacoes.invocacoes` retornará um lista de 5 invocações, onde
+`ficha.invocacoes.invocacoes` retornará uma lista de 5 invocações, onde
 cada um delas terá os seguintes atributos:
 
 - `acoes`
