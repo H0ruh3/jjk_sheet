@@ -166,7 +166,7 @@ class FichaPessoal:
           "critico": values[i][38],
           "tipo": values[i][41],
           "alcance": values[i][44]
-          } for i in range(25, 28) if all([c < len(values[i]) for c in [28, 32, 34, 38, 41, 44]]) and values[i][28] != ""
+          } for i in range(25, 29) if all([c < len(values[i]) for c in [28, 32, 34, 38, 41, 44]]) and values[i][28] != ""
           ]
         
         self.habilidades_de_especializacao = [(values[i][57], pl.get_note(n)) for i, n in [(c, f"BF{c+1}") for c in range(4, 29)] if values[i][57] != ""]
@@ -242,7 +242,7 @@ class RegistroEInventario:
         self.nome = values[1][4] if 14 < len(values[1]) else ""
         self.aparencia = values[4][1] if 1 < len(values[4]) else ""
         self.aparencia = self.aparencia if self.aparencia != "" else pl.acell('B5', value_render_option='FORMULA').value.replace("'", '"')
-        self.aparencia = "" if "IMAGE" not in self.aparencia else self.aparencia[self.aparencia.find('"')+1:self.aparencia.rfind('"')]
+        self.aparencia = self.aparencia if "IMAGE" not in self.aparencia else self.aparencia[self.aparencia.find('"')+1:self.aparencia.rfind('"')]
         self.idade = values[3][13] if 13 < len(values[3]) else ""
         self.altura = values[4][13] if 13 < len(values[4]) else ""
         self.peso = values[5][13] if 13 < len(values[5]) else ""
@@ -276,7 +276,7 @@ class RegistroEInventario:
                 "custo": values[i][52]
             } for i in range(4, 28) if all([c < len(values[i]) for c in [38, 48, 50, 52]]) and values[i][38] != ""
         ]
-        self.inv = self.inv_col1 + self.inv_col2
+        self.inv = inv_col1 + inv_col2
         self.espacos_ocupados = values[29][31] if 31 < len(values[29]) else ""
         self.limite_de_espacos = values[29][48] if 48 < len(values[29]) else ""
         self.historia_do_personagem = values[3][55] if 55 < len(values[3]) else ""
