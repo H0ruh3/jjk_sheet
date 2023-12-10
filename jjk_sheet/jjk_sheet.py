@@ -6,14 +6,14 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 class Ficha:
-    def __init__(self, creds_json, url):
+    def __init__(self, creds_json, token_path, url):
         SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
         sheet_id = gspread.utils.extract_id_from_url(url)
         
         creds = None
         
-        if os.path.exists("token.json"):
-            creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+        if os.path.exists(token_path):
+            creds = Credentials.from_authorized_user_file(token_path, SCOPES)
         
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
@@ -25,7 +25,7 @@ class Ficha:
                 )
                 creds = flow.run_local_server(port=0)
 
-            with open("token.json", "w") as token:
+            with open(token_path, "w") as token:
                 token.write(creds.to_json())
         
         client = gspread.authorize(creds)
