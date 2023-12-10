@@ -13,7 +13,7 @@ Primeiro será instanciada a ficha passando caminho para o arquivo
 ```py
 from jjk_sheet import Ficha
 
-ficha = Ficha("your_client_secret.json", "https://url.para.sua.ficha/")
+ficha = Ficha("your_client_secret.json", "your_token_path.json", "https://url.para.sua.ficha/")
 ```
 Com a ficha instanciada agora podemos acessar os dados das tabelas
 da sua planilha no GoogleSheets.
